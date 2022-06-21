@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { AppDBService } from './app.service';
+import { AppDBService } from './appDB.service';
 
 @Component({
   selector: 'my-app',
