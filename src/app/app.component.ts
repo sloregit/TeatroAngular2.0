@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { AppDBService } from './appDB.service';
+import { AppDataService } from './appdata.service';
 
 @Component({
   selector: 'my-app',
@@ -7,9 +7,9 @@ import { AppDBService } from './appDB.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private Appservice: AppDBService) {}
+  constructor(private AppDataService: AppDataService) {}
   mostraPrenotazioni() {
-    this.Appservice.getPrenotazioni$().subscribe({
+    this.AppDataService.getPrenotazioni$().subscribe({
       next: (res: string) => {
         console.log(res);
       },

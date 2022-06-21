@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AppDBService } from './app.service';
+import { AppDataService } from './appdata.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [AppDBService],
+  providers: [AppDataService],
 })
 export class AppModule {}
