@@ -55,7 +55,6 @@ export class AppComponent {
       this.datiIn[this.spettacoloScelto].teatro,
       rapido
     );
-    console.log(this.teatro);
   }
   //richiamata al change del <select>, assegna il nome e l'indice dello spettacolo
   numeraSpettacolo($event) {
