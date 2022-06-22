@@ -1,5 +1,11 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Teatro } from '../app.component';
+
+export class Pulsante {
+  etichetta: string;
+  nomePosto: string;
+}
+
 @Component({
   selector: 'app-teatro',
   templateUrl: './teatro.component.html',
@@ -7,9 +13,9 @@ import { Teatro } from '../app.component';
 })
 export class TeatroComponent implements OnInit {
   @Input() teatro: Teatro;
-  constructor() {
-    console.log(this.teatro);
-  }
+  pulsante: Pulsante;
+  nomeposto: string;
+  constructor() {}
 
   ngOnInit() {}
 }

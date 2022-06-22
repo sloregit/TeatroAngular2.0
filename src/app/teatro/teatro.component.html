@@ -1,0 +1,12 @@
+<p>Qui il nome</p>
+<p></p>
+<div>
+  <p>Platea</p>
+  <div *ngFor="let elem of teatro.prenotazioni.platea; let i = index">
+    <button value="elem">P+i</button>
+  </div>
+  <p>Palco</p>
+  <div *ngFor="let elem of teatro.prenotazioni.palco">
+    <p>{{ elem }}</p>
+  </div>
+</div>

@@ -46,6 +46,7 @@ export class AppComponent {
     this.arrayNomeSpettacoli = [];
     this.nomeInserito = undefined;
     this.spettacoloScelto = undefined;
+    this.teatro = undefined;
   }
   //crea il teatro --> TeatroComponent
   generaTeatro(rapido) {
