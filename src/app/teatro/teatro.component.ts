@@ -7,11 +7,11 @@ import { Teatro } from '../app.component';
 })
 export class TeatroComponent implements OnInit {
   @Input() teatro: Teatro;
-  constructor() {}
-
-  ngOnInit() {
+  constructor() {
     console.log(this.teatro);
   }
+
+  ngOnInit() {}
 }
 
 /**
