@@ -16,7 +16,9 @@ export class TeatroComponent implements OnInit {
   pulsante: Pulsante;
   nomeposto: string;
   constructor() {}
-
+  mostraNome(this) {
+    console.log(this.value);
+  }
   ngOnInit() {}
 }
 

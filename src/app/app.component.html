@@ -9,12 +9,12 @@
     placeholder="inserisci il tuo nome"
   /><br />
   <select *ngIf="nomeInserito" (change)="numeraSpettacolo($event)">
-    <option selected="true" disabled="true" value="0">
+    <option selected="true" disabled="true" [value]="0">
       Seleziona lo spettacolo
     </option>
     <option
       *ngFor="let spettacolo of arrayNomeSpettacoli; let i = index"
-      value="{{ i }}"
+      [value]="i"
     >
       {{ spettacolo }}
     </option></select

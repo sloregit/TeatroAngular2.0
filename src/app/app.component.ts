@@ -59,6 +59,7 @@ export class AppComponent {
   }
   //richiamata al change del <select>, assegna il nome e l'indice dello spettacolo
   numeraSpettacolo($event) {
+    console.log(typeof $event.target.value);
     this.spettacoloScelto = $event.target.value;
     this.nomeSpettacolo = this.arrayNomeSpettacoli[$event.target.value];
   }
