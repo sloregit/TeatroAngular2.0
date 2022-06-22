@@ -13,6 +13,8 @@ export class AppComponent {
     this.AppDataService.getPrenotazioni$().subscribe({
       next: (res: string) => {
         this.prenotazioni = JSON.parse(res);
+        console.log(res);
+        console.log(this.prenotazioni);
         for (let i in this.prenotazioni)
           console.log(this.prenotazioni[i].nomeSpettacolo);
       },
