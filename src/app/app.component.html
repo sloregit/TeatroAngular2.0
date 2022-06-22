@@ -1,7 +1,22 @@
-<div>
-  <select name="" id="">
-    <option value=""></option></select
-  ><br />
-  <input /><br />
-  <button (click)="mostraPrenotazioni()">vedi</button>
+<div *ngIf="!login">
+  <button (click)="getPrenotazioni(false)">Accedi</button><br />
+  <button (click)="getPrenotazioni(true)">Gestione spettacoli</button>
 </div>
+<div *ngIf="login && admin == false">
+  <input
+    type="text"
+    (keyup)="inInput($event)"
+    placeholder="inserisci il tuo nome"
+  /><br />
+  <select (change)="numeraSpettacolo($event)">
+    <option selected="true" disabled="true" value="0">
+      Seleziona lo spettacolo
+    </option>
+    <option *ngFor="let spettacolo of spettacoli" value="{{ spettacolo }}">
+      {{ spettacolo }}
+    </option></select
+  ><br />
+  <button (click)="mostraPrenotazioni()">vedi</button>
+  <div></div>
+</div>
+<button *ngIf="login" (click)="indietro()">Indietro</button>
