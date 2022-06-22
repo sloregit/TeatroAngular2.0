@@ -7,8 +7,8 @@ export interface spettacolo {
   prenotazioni: prenotazioni;
 }
 export interface prenotazioni {
-  platea: Array<string>;
-  palco: Array<string>;
+  platea?: Array<string>;
+  palco?: Array<string>;
 }
 export class Teatro implements spettacolo {
   nomeSpettacolo: string;

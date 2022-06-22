@@ -1,0 +1,11 @@
+<div *ngFor="let fila of prenotazioni; let i = index">
+  <span *ngFor="let posto of fila; let j = index">
+    <button
+      [ngClass]="posto !== 'x' ? 'prenotato' : 'libero'"
+      [value]="posto"
+      (click)="mostraNome()"
+    >
+      {{ posto }}
+    </button>
+  </span>
+</div>
