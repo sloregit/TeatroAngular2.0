@@ -7,14 +7,29 @@ import { AppDataService } from './appdata.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private AppDataService: AppDataService) {}
+  prenotazioni;
+  spettacoli = new Array();
+  constructor(private AppDataService: AppDataService) {
+    this.AppDataService.getPrenotazioni$().subscribe({
+      next: (res: string) => {
+        this.prenotazioni = JSON.parse(res);
+        for (let i in this.prenotazioni)
+          console.log(this.prenotazioni[i].nomeSpettacolo);
+      },
+      error: (err) =>
+        console.error('Observer got an error: ' + JSON.stringify(err)),
+    });
+  }
   mostraPrenotazioni() {
+    console.log(this.prenotazioni);
+
+    /*
     this.AppDataService.getPrenotazioni$().subscribe({
       next: (res: string) => {
         console.log(res);
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
-    });
+    });*/
   }
 }
