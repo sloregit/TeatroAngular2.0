@@ -2,18 +2,18 @@ import { Component, VERSION } from '@angular/core';
 import { last } from 'rxjs/operators';
 import { AppDataService } from './appdata.service';
 
-export interface datiIn {
-  prenotazioni: string;
-  teatro: Teatro;
+export interface spettacolo {
+  nomeSpettacolo: string;
+  prenotazioni: prenotazioni;
 }
 export interface prenotazioni {
   platea: Array<string>;
   palco: Array<string>;
 }
-export class Teatro {
+export class Teatro implements spettacolo {
   nomeSpettacolo: string;
-  nomePrenotazione: string;
   prenotazioni: prenotazioni;
+  nomePrenotazione: string;
   rapido: boolean;
   constructor(nomePrenotazione, nomeSpettacolo, prenotazioni, rapido) {
     this.nomePrenotazione = nomePrenotazione;
@@ -30,26 +30,42 @@ export class Teatro {
 export class AppComponent {
   login: boolean = false;
   admin: boolean = false;
-  datiIn: datiIn;
-  spettacoli = new Array();
+  datiIn: Array<spettacolo>;
   teatro: Teatro;
-  //
-  spettacoloScelto: string;
   nomeInserito: string;
+  //
+  nomeSpettacolo: string;
+  spettacoloScelto: string;
+  arrayNomeSpettacoli: Array<string> = new Array();
+
   constructor(private AppDataService: AppDataService) {}
 
-  //richiamata al change del <select>, restituisce il nome dello spettacolo
-  numeraSpettacolo($event) {
-    console.log($event.target.index);
-    this.spettacoloScelto = $event.target.value;
+  //torna alla home, resetta i valori
+  indietro() {
+    this.login = false;
+    this.arrayNomeSpettacoli = [];
+    this.nomeInserito = undefined;
+    this.spettacoloScelto = undefined;
   }
+  //crea il teatro --> TeatroComponent
+  generaTeatro(rapido) {
+    this.teatro = new Teatro(
+      this.nomeInserito,
+      this.nomeSpettacolo,
+      this.datiIn[this.spettacoloScelto].teatro,
+      rapido
+    );
+    console.log(this.teatro);
+  }
+  //richiamata al change del <select>, assegna il nome e l'indice dello spettacolo
+  numeraSpettacolo($event) {
+    this.spettacoloScelto = $event.target.value;
+    this.nomeSpettacolo = this.arrayNomeSpettacoli[$event.target.value];
+  }
+
   //il valore del campo input
   inInput($event) {
     this.nomeInserito = $event.target.value;
-  }
-  indietro() {
-    this.login = false;
-    this.spettacoli = [];
   }
   //richiede le prenotazioni e costruisce l'array con i nomi degli spettacoli
   getDati(admin) {
@@ -59,17 +75,11 @@ export class AppComponent {
       next: (res: string) => {
         this.datiIn = JSON.parse(res);
         for (let elem in this.datiIn) {
-          this.spettacoli.push(this.datiIn[elem].nomeSpettacolo);
+          this.arrayNomeSpettacoli.push(this.datiIn[elem].nomeSpettacolo);
         }
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
     });
-    console.log(this.datiIn);
-  }
-  mostraPrenotazioni(rapido) {
-    if (rapido) {
-      //this.teatro =  new Teatro(this.nomeInserito,this.numeraSpettacolo,this.datiIn[])
-    }
   }
 }

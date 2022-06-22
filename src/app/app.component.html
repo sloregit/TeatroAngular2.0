@@ -8,19 +8,20 @@
     (keyup)="inInput($event)"
     placeholder="inserisci il tuo nome"
   /><br />
-  <select (change)="numeraSpettacolo($event)">
+  <select *ngIf="nomeInserito" (change)="numeraSpettacolo($event)">
     <option selected="true" disabled="true" value="0">
       Seleziona lo spettacolo
     </option>
     <option
-      *ngFor="let spettacolo of spettacoli; let i = index"
-      value="{{ spettacolo }}"
+      *ngFor="let spettacolo of arrayNomeSpettacoli; let i = index"
+      value="{{ i }}"
     >
       {{ spettacolo }}
     </option></select
   ><br />
-  <button (click)="mostraPrenotazioni(false)">Prenota</button>
-  <button (click)="mostraPrenotazioni(true)">PrenotaZione Rapida</button>
-  <div></div>
+  <div *ngIf="spettacoloScelto">
+    <button (click)="generaTeatro(false)">Prenota</button>
+    <button (click)="generaTeatro(true)">PrenotaZione Rapida</button>
+  </div>
 </div>
 <button *ngIf="login" (click)="indietro()">Indietro</button>
