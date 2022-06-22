@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { last } from 'rxjs/operators';
 import { AppDataService } from './appdata.service';
 
 export interface datiIn {
@@ -39,9 +40,8 @@ export class AppComponent {
 
   //richiamata al change del <select>, restituisce il nome dello spettacolo
   numeraSpettacolo($event) {
-    console.log($event.target.value);
-    console.log(typeof $event.target.value);
-    this.spettacoloScelto = $event.target.index;
+    console.log($event.target.index);
+    this.spettacoloScelto = $event.target.value;
   }
   //il valore del campo input
   inInput($event) {
