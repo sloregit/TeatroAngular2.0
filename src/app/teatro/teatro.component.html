@@ -3,12 +3,10 @@
 <div>
   <p>Platea</p>
   <app-zona-teatro
-    [prenotazioni]="teatro.prenotazioni.platea"
+    [(prenotazioni)]="teatro.prenotazioni.platea"
+    [nome]="teatro.nomePrenotazione"
+    [rapido]="teatro.rapido"
   ></app-zona-teatro>
   <p>Palco</p>
-  <div *ngFor="let fila of teatro.prenotazioni.palco; let i = index">
-    <span *ngFor="let posto of fila; let j = index">
-      <button [value]="posto" (click)="mostraNome()">{{ posto }}</button>
-    </span>
-  </div>
+  <app-zona-teatro [prenotazioni]="teatro.prenotazioni.palco"></app-zona-teatro>
 </div>

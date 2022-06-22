@@ -2,8 +2,9 @@
   <span *ngFor="let posto of fila; let j = index">
     <button
       [ngClass]="posto !== 'x' ? 'prenotato' : 'libero'"
+      [ngClass]="selezionato ? 'selezionato' : 'nonSelezionato'"
       [value]="posto"
-      (click)="mostraNome()"
+      (click)="prenota(i, j)"
     >
       {{ posto }}
     </button>

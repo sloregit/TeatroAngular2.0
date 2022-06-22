@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { prenotazioni } from '../app.component';
 
 @Component({
@@ -8,7 +8,18 @@ import { prenotazioni } from '../app.component';
 })
 export class ZonaTeatroComponent implements OnInit {
   @Input() prenotazioni;
+  @Input() nome;
+  @Input() rapido;
+  @Output() prenotazioniChange = new EventEmitter();
+  selezionato: boolean;
   constructor() {}
-  mostraNome() {}
+  prenota(fila, posto) {
+    if (this.rapido) {
+      this.prenotazioni[fila][posto] = this.nome;
+      this.prenotazioniChange.emit(this.prenotazioni);
+    } else {
+      this.selezionato == true ? false : true;
+    }
+  }
   ngOnInit() {}
 }
