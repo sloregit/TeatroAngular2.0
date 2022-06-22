@@ -11,7 +11,15 @@ export interface prenotazioni {
 }
 export class Teatro {
   nomeSpettacolo: string;
-  teatro: prenotazioni;
+  nomePrenotazione: string;
+  prenotazioni: prenotazioni;
+  rapido: boolean;
+  constructor(nomePrenotazione, nomeSpettacolo, prenotazioni, rapido) {
+    this.nomePrenotazione = nomePrenotazione;
+    this.nomeSpettacolo = nomeSpettacolo;
+    this.prenotazioni = prenotazioni;
+    this.rapido = rapido;
+  }
 }
 @Component({
   selector: 'my-app',
@@ -21,8 +29,10 @@ export class Teatro {
 export class AppComponent {
   login: boolean = false;
   admin: boolean = false;
-  prenotazioni: datiIn;
+  datiIn: datiIn;
   spettacoli = new Array();
+  teatro: Teatro;
+  //
   spettacoloScelto: string;
   nomeInserito: string;
   constructor(private AppDataService: AppDataService) {}
@@ -30,7 +40,8 @@ export class AppComponent {
   //richiamata al change del <select>, restituisce il nome dello spettacolo
   numeraSpettacolo($event) {
     console.log($event.target.value);
-    this.spettacoloScelto = $event.target.value;
+    console.log(typeof $event.target.value);
+    this.spettacoloScelto = $event.target.index;
   }
   //il valore del campo input
   inInput($event) {
@@ -41,20 +52,24 @@ export class AppComponent {
     this.spettacoli = [];
   }
   //richiede le prenotazioni e costruisce l'array con i nomi degli spettacoli
-  getPrenotazioni(admin) {
+  getDati(admin) {
     this.admin = admin;
     this.login = true;
     this.AppDataService.getPrenotazioni$().subscribe({
       next: (res: string) => {
-        this.prenotazioni = JSON.parse(res);
-        for (let elem in this.prenotazioni) {
-          this.spettacoli.push(this.prenotazioni[elem].nomeSpettacolo);
+        this.datiIn = JSON.parse(res);
+        for (let elem in this.datiIn) {
+          this.spettacoli.push(this.datiIn[elem].nomeSpettacolo);
         }
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
     });
-    console.log(this.prenotazioni);
+    console.log(this.datiIn);
   }
-  mostraPrenotazioni() {}
+  mostraPrenotazioni(rapido) {
+    if (rapido) {
+      //this.teatro =  new Teatro(this.nomeInserito,this.numeraSpettacolo,this.datiIn[])
+    }
+  }
 }

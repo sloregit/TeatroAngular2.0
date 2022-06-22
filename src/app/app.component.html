@@ -1,6 +1,6 @@
 <div *ngIf="!login">
-  <button (click)="getPrenotazioni(false)">Accedi</button><br />
-  <button (click)="getPrenotazioni(true)">Gestione spettacoli</button>
+  <button (click)="getDati(false)">Accedi</button><br />
+  <button (click)="getDati(true)">Gestione spettacoli</button>
 </div>
 <div *ngIf="login && admin == false">
   <input
@@ -12,11 +12,15 @@
     <option selected="true" disabled="true" value="0">
       Seleziona lo spettacolo
     </option>
-    <option *ngFor="let spettacolo of spettacoli" value="{{ spettacolo }}">
+    <option
+      *ngFor="let spettacolo of spettacoli; let i = index"
+      value="{{ spettacolo }},{{ i }}"
+    >
       {{ spettacolo }}
     </option></select
   ><br />
-  <button (click)="mostraPrenotazioni()">vedi</button>
+  <button (click)="mostraPrenotazioni(false)">Prenota</button>
+  <button (click)="mostraPrenotazioni(true)">PrenotaZione Rapida</button>
   <div></div>
 </div>
 <button *ngIf="login" (click)="indietro()">Indietro</button>
