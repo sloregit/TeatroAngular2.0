@@ -1,6 +1,23 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { prenotazioni } from '../app.component';
 
+export class PrenotazioneMultipla {
+  selezionati;
+  constructor() {
+    this.selezionati = [];
+  }
+  aggiungi(prenotazione) {
+    this.selezionati.push(prenotazione);
+  }
+  rimuovi(fila: number, posto: number) {
+    this.selezionati.map((old, i) => {
+      if (old.fila === fila && old.posto === posto) {
+        this.selezionati.splice(i, 1);
+      }
+    });
+  }
+}
+
 @Component({
   selector: 'app-zona-teatro',
   templateUrl: './zona-teatro.component.html',
@@ -11,14 +28,18 @@ export class ZonaTeatroComponent implements OnInit {
   @Input() nome;
   @Input() rapido;
   @Output() prenotazioniChange = new EventEmitter();
-  selezionato: boolean;
+  selezionato: boolean = false;
+  selezionati: PrenotazioneMultipla;
   constructor() {}
   prenota(fila, posto) {
     if (this.rapido) {
       this.prenotazioni[fila][posto] = this.nome;
       this.prenotazioniChange.emit(this.prenotazioni);
     } else {
-      this.selezionato == true ? false : true;
+      this.selezionato === true
+        ? (this.selezionato = false)
+        : (this.selezionato = true);
+      console.log(this.selezionato);
     }
   }
   ngOnInit() {}

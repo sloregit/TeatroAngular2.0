@@ -1,8 +1,8 @@
 <div *ngFor="let fila of prenotazioni; let i = index">
   <span *ngFor="let posto of fila; let j = index">
     <button
-      [ngClass]="posto !== 'x' ? 'prenotato' : 'libero'"
       [ngClass]="selezionato ? 'selezionato' : 'nonSelezionato'"
+      [ngClass]="posto !== 'x' ? 'prenotato' : 'libero'"
       [value]="posto"
       (click)="prenota(i, j)"
     >
