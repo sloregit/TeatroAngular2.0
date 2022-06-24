@@ -1,0 +1,8 @@
+<button
+  #puls
+  [ngClass]="selezionato ? 'selezionato' : 'nonSelezionato'"
+  [ngClass]="posto !== 'x' ? 'prenotato' : 'libero'"
+  (click)="select()"
+>
+  {{ posto }}
+</button>

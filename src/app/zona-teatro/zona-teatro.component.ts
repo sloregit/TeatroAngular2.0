@@ -32,15 +32,11 @@ export class ZonaTeatroComponent implements OnInit {
   selezionati: PrenotazioneMultipla;
   constructor() {}
   prenota(fila, posto) {
+    console.log(this);
     if (this.rapido) {
       this.prenotazioni[fila][posto] = this.nome;
       this.prenotazioniChange.emit(this.prenotazioni);
-    } else {
-      this.selezionato === true
-        ? (this.selezionato = false)
-        : (this.selezionato = true);
-      console.log(this.selezionato);
-    }
+    } 
   }
   ngOnInit() {}
 }

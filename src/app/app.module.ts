@@ -7,10 +7,16 @@ import { AppComponent } from './app.component';
 import { AppDataService } from './appdata.service';
 import { TeatroComponent } from './teatro/teatro.component';
 import { ZonaTeatroComponent } from './zona-teatro/zona-teatro.component';
+import { PulsanteComponent } from './pulsante/pulsante.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  declarations: [AppComponent, TeatroComponent, ZonaTeatroComponent],
+  declarations: [
+    AppComponent,
+    TeatroComponent,
+    ZonaTeatroComponent,
+    PulsanteComponent,
+  ],
   bootstrap: [AppComponent],
   providers: [AppDataService],
 })
