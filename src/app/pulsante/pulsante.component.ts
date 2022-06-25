@@ -10,9 +10,12 @@ export class PulsanteComponent implements OnInit {
   selezionato = false;
   constructor() {}
   select() {
-    this.selezionato === true
-      ? (this.selezionato = false)
-      : (this.selezionato = true);
+    console.log(this.posto);
+    if (this.posto === 'x') {
+      this.selezionato === true
+        ? (this.selezionato = false)
+        : (this.selezionato = true);
+    }
   }
   /**
  * else {
