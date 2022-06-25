@@ -3,9 +3,7 @@ import { prenotazioni } from '../app.component';
 
 export class PrenotazioneMultipla {
   selezionati;
-  constructor() {
-    this.selezionati = [];
-  }
+  constructor() {}
   aggiungi(prenotazione) {
     this.selezionati.push(prenotazione);
   }
@@ -32,11 +30,11 @@ export class ZonaTeatroComponent implements OnInit {
   selezionati: PrenotazioneMultipla;
   constructor() {}
   prenota(fila, posto) {
-    console.log(this);
+    console.log(fila, posto);
     if (this.rapido) {
       this.prenotazioni[fila][posto] = this.nome;
       this.prenotazioniChange.emit(this.prenotazioni);
-    } 
+    }
   }
   ngOnInit() {}
 }

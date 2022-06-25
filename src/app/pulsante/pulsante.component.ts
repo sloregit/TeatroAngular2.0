@@ -10,20 +10,12 @@ export class PulsanteComponent implements OnInit {
   selezionato = false;
   constructor() {}
   select() {
-    console.log(this.posto);
+    //se il posto è libero e viene cliccato viene selezionato
     if (this.posto === 'x') {
       this.selezionato === true
         ? (this.selezionato = false)
         : (this.selezionato = true);
     }
   }
-  /**
- * else {
-      this.selezionato === true
-        ? (this.selezionato = false)
-        : (this.selezionato = true);
-      console.log(this.selezionato);
-    }
- */
   ngOnInit() {}
 }
