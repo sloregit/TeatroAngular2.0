@@ -1,5 +1,10 @@
 <div *ngFor="let fila of prenotazioni; let i = index">
   <span *ngFor="let posto of fila; let j = index">
-    <app-pulsante [posto]="posto" (click)="prenota(i, j)"> </app-pulsante>
+    <app-pulsante
+      [posto]="posto"
+      (click)="prenota(i, j)"
+      (selectEmitter)="selezionatoChange($event)"
+    >
+    </app-pulsante>
   </span>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pulsante',
@@ -7,7 +7,8 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class PulsanteComponent implements OnInit {
   @Input() posto;
-  selezionato = false;
+  @Output() selezionatoChange = new EventEmitter<boolean>();
+  @Input() selezionato = false;
   constructor() {}
   select() {
     //se il posto è libero e viene cliccato viene selezionato
@@ -16,6 +17,7 @@ export class PulsanteComponent implements OnInit {
         ? (this.selezionato = false)
         : (this.selezionato = true);
     }
+    this.selezionatoChange.emit(this.selezionato);
   }
   ngOnInit() {}
 }
