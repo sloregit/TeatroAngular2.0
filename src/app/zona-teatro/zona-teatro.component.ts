@@ -44,20 +44,28 @@ export class ZonaTeatroComponent implements OnInit {
   nuovaPrenotazione: Prenotazione;
   constructor() {}
   selezionatoChange($event) {
-    console.log($event);
+    this.selezionato = $event;
   }
+  //Se rapida, prenota il posto
+  //altrimenti aggiunge la prenotazione alla prenotazione multipla
   prenota(fila, posto) {
-    console.log(this.selezionato);
     if (this.rapido) {
       this.prenotazioni[fila][posto] = this.nome;
       this.prenotazioniChange.emit(this.prenotazioni);
     } else {
+      //crea una prenotazione multipla se non esiste e aggiunge la prima prenotazione
       if (this.selezionati === undefined) {
         this.selezionati = new PrenotazioneMultipla();
-      } else {
-        this.nuovaPrenotazione = new Prenotazione(this.nome, fila, posto);
         this.selezionati.aggiungi(this.nuovaPrenotazione);
+      } else {
+        if (!this.selezionato) {
+          this.selezionati.rimuovi(fila, posto);
+        } else {
+          this.nuovaPrenotazione = new Prenotazione(this.nome, fila, posto);
+          this.selezionati.aggiungi(this.nuovaPrenotazione);
+        }
       }
+      console.log(this.selezionati);
     }
   }
   ngOnInit() {}
