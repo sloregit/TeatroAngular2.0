@@ -6,10 +6,17 @@
     [(prenotazioni)]="teatro.prenotazioni.platea"
     [nome]="teatro.nomePrenotazione"
     [rapido]="teatro.rapido"
+    [zona]="'platea'"
     [(selezionati)]="prenotazioneMultipla"
   ></app-zona-teatro>
   <p>Palco</p>
-  <app-zona-teatro [prenotazioni]="teatro.prenotazioni.palco"></app-zona-teatro>
+  <app-zona-teatro
+    [(prenotazioni)]="teatro.prenotazioni.palco"
+    [nome]="teatro.nomePrenotazione"
+    [rapido]="teatro.rapido"
+    [zona]="'palco'"
+    [(selezionati)]="prenotazioneMultipla"
+  ></app-zona-teatro>
 </div>
 <br />
 <button (click)="confermaPrenotazioni()">Conferma</button>

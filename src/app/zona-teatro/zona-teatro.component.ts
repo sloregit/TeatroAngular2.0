@@ -8,6 +8,7 @@ import { Prenotazione, PrenotazioneMultipla } from '../teatro/teatro.component';
 })
 export class ZonaTeatroComponent implements OnInit {
   @Input() prenotazioni;
+  @Input() zona;
   @Input() nome: string;
   @Input() rapido: boolean;
   @Input() selezionati: PrenotazioneMultipla;
@@ -30,13 +31,23 @@ export class ZonaTeatroComponent implements OnInit {
       //crea una prenotazione multipla se non esiste e aggiunge la prima prenotazione
       if (this.selezionati === undefined) {
         this.selezionati = new PrenotazioneMultipla();
-        this.nuovaPrenotazione = new Prenotazione(this.nome, fila, posto);
+        this.nuovaPrenotazione = new Prenotazione(
+          this.zona,
+          this.nome,
+          fila,
+          posto
+        );
         this.selezionati.aggiungi(this.nuovaPrenotazione);
       } else {
         if (!this.selezionato) {
           this.selezionati.rimuovi(fila, posto);
         } else {
-          this.nuovaPrenotazione = new Prenotazione(this.nome, fila, posto);
+          this.nuovaPrenotazione = new Prenotazione(
+            this.zona,
+            this.nome,
+            fila,
+            posto
+          );
           this.selezionati.aggiungi(this.nuovaPrenotazione);
         }
       }
