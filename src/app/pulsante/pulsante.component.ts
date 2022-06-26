@@ -10,6 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PulsanteComponent implements OnInit {
   @Input() posto;
   @Output() selezionatoEmitter = new EventEmitter<boolean>();
+  @Output() nomePostoEmitter = new EventEmitter<string>();
   selezionato: boolean = false;
   constructor() {}
   select() {
@@ -18,8 +19,9 @@ export class PulsanteComponent implements OnInit {
       this.selezionato === true
         ? (this.selezionato = false)
         : (this.selezionato = true);
+      this.nomePostoEmitter.emit(undefined);
     } else {
-      this.selezionatoEmitter.emit(this.posto);
+      this.nomePostoEmitter.emit(this.posto);
     }
     this.selezionatoEmitter.emit(this.selezionato);
   }

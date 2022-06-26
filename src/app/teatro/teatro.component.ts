@@ -41,9 +41,11 @@ export class TeatroComponent implements OnInit {
   @Input() prenotazioneMultipla: PrenotazioneMultipla;
   @Input() nomeInserito: string;
   @Output() nomeInseritoChange = new EventEmitter<string>();
+  nomePrenotato: string;
   constructor() {}
-  mostraNome(this) {
-    console.log(this);
+  mostraNome($event) {
+    this.nomePrenotato = $event;
+    console.log(this.nomePrenotato);
   }
 
   ///////////////////////////////////////////////////////SONO QUI

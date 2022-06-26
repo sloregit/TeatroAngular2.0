@@ -14,11 +14,15 @@ export class ZonaTeatroComponent implements OnInit {
   @Input() selezionati: PrenotazioneMultipla;
   @Output() prenotazioniChange = new EventEmitter<Array<string>>();
   @Output() selezionatiChange = new EventEmitter<PrenotazioneMultipla>();
+  @Output() mostraNomeEmitter = new EventEmitter<string>();
   selezionato: boolean;
   nuovaPrenotazione: Prenotazione;
   constructor() {}
   isSelezionato($event: boolean) {
     this.selezionato = $event;
+  }
+  mostraNome($event) {
+    this.mostraNomeEmitter.emit($event);
   }
 
   //Se rapida, prenota il posto
