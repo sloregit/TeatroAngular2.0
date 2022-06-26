@@ -64,6 +64,9 @@ export class TeatroComponent implements OnInit {
         prenotazione.posto
       ] = prenotazione.nome;
     });
+    this.nomeInserito = undefined;
+    this.nomeInseritoChange.emit(undefined);
+
     //this.teatro = undefined;
   }
   ngOnInit() {}
