@@ -41,13 +41,20 @@ export class TeatroComponent implements OnInit {
   @Input() prenotazioneMultipla: PrenotazioneMultipla;
   @Input() nomeInserito: string;
   @Output() nomeInseritoChange = new EventEmitter<string>();
+  @Output() teatroChange = new EventEmitter<undefined>();
   nomePrenotato: string;
   constructor() {}
+  // riceve il nome della prenotazione da zona-component
   mostraNome($event) {
     this.nomePrenotato = $event;
-    console.log(this.nomePrenotato);
   }
-
+  //torna alla selezione degli spettacoli
+  indietro() {
+    this.nomeInserito = undefined;
+    this.teatro = undefined;
+    this.teatroChange.emit(undefined);
+    this.nomeInseritoChange.emit(undefined);
+  }
   ///////////////////////////////////////////////////////SONO QUI
   confermaPrenotazioni() {
     ///rimappare le prenotazioni e invio al DB la richiesta
@@ -57,6 +64,7 @@ export class TeatroComponent implements OnInit {
         prenotazione.posto
       ] = prenotazione.nome;
     });
+    //this.teatro = undefined;
   }
   ngOnInit() {}
 }

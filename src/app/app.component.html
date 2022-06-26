@@ -3,33 +3,34 @@
   <button (click)="getDati(true)">Gestione spettacoli</button>
 </div>
 <div *ngIf="login && admin == false">
-  <select (change)="numeraSpettacolo($event)">
-    <option selected="true" disabled="true" [value]="0">
-      Seleziona lo spettacolo
-    </option>
-    <option
-      *ngFor="let spettacolo of arrayNomeSpettacoli; let i = index"
-      [value]="i"
-    >
-      {{ spettacolo }}
-    </option></select
-  ><br />
-  <input
-    *ngIf="spettacoloScelto"
-    type="text"
-    (keyup)="inInput($event)"
-    placeholder="inserisci il tuo nome"
-  /><br />
-
-  <div *ngIf="nomeInserito">
-    <button (click)="generaTeatro(false)">Prenota</button>
-    <button (click)="generaTeatro(true)">PrenotaZione Rapida</button>
+  <div *ngIf="!teatro">
+    <select (change)="numeraSpettacolo($event)">
+      <option selected="true" disabled="true" [value]="0">
+        Seleziona lo spettacolo
+      </option>
+      <option
+        *ngFor="let spettacolo of arrayNomeSpettacoli; let i = index"
+        [value]="i"
+      >
+        {{ spettacolo }}
+      </option></select
+    ><br />
+    <div *ngIf="spettacoloScelto">
+      <button (click)="generaTeatro(false)">Prenota</button>
+      <button (click)="generaTeatro(true)">Prenotazione Rapida</button>
+    </div>
+  </div>
+  <div *ngIf="teatro">
+    <input
+      type="text"
+      (keyup)="inInput($event)"
+      placeholder="inserisci il tuo nome"
+    /><br />
+    <app-teatro
+      [(nomeInserito)]="nomeInserito"
+      [(teatro)]="teatro"
+    ></app-teatro>
   </div>
 </div>
-<app-teatro
-  *ngIf="teatro"
-  [(nomeInserito)]="nomeInserito"
-  [teatro]="teatro"
-></app-teatro>
+<button *ngIf="login && !teatro" (click)="indietro()">Indietro</button>
 <br />
-<button *ngIf="login" (click)="indietro()">Indietro</button>

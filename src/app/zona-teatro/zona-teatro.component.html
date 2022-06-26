@@ -2,9 +2,11 @@
   <span *ngFor="let posto of fila; let j = index">
     <app-pulsante
       [posto]="posto"
+      [nome]="nome"
+      [(prenotabile)]="prenotabile"
       (click)="prenota(i, j)"
       (selezionatoEmitter)="isSelezionato($event)"
-      (nomePostoEmitter)="mostraNome($event)"
+      (nomePostoEmitter)="mostraNome_TeatroComponent($event)"
     >
     </app-pulsante>
   </span>

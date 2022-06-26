@@ -53,10 +53,10 @@ export class AppComponent {
       this.datiIn[this.spettacoloScelto].teatro,
       rapido
     );
+    this.spettacoloScelto = undefined;
   }
   //richiamata al change del <select>, assegna il nome e l'indice dello spettacolo
   numeraSpettacolo($event) {
-    console.log(typeof $event.target.value);
     this.spettacoloScelto = $event.target.value;
     this.nomeSpettacolo = this.arrayNomeSpettacoli[$event.target.value];
   }
