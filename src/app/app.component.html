@@ -3,12 +3,7 @@
   <button (click)="getDati(true)">Gestione spettacoli</button>
 </div>
 <div *ngIf="login && admin == false">
-  <input
-    type="text"
-    (keyup)="inInput($event)"
-    placeholder="inserisci il tuo nome"
-  /><br />
-  <select *ngIf="nomeInserito" (change)="numeraSpettacolo($event)">
+  <select (change)="numeraSpettacolo($event)">
     <option selected="true" disabled="true" [value]="0">
       Seleziona lo spettacolo
     </option>
@@ -19,7 +14,14 @@
       {{ spettacolo }}
     </option></select
   ><br />
-  <div *ngIf="spettacoloScelto">
+  <input
+    *ngIf="spettacoloScelto"
+    type="text"
+    (keyup)="inInput($event)"
+    placeholder="inserisci il tuo nome"
+  /><br />
+
+  <div *ngIf="nomeInserito">
     <button (click)="generaTeatro(false)">Prenota</button>
     <button (click)="generaTeatro(true)">PrenotaZione Rapida</button>
   </div>
