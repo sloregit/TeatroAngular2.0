@@ -24,6 +24,10 @@
     <button (click)="generaTeatro(true)">PrenotaZione Rapida</button>
   </div>
 </div>
-<app-teatro *ngIf="teatro" [teatro]="teatro"></app-teatro>
+<app-teatro
+  *ngIf="teatro"
+  [(nomeInserito)]="nomeInserito"
+  [teatro]="teatro"
+></app-teatro>
 <br />
 <button *ngIf="login" (click)="indietro()">Indietro</button>

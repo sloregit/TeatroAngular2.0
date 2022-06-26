@@ -13,10 +13,8 @@ export interface prenotazioni {
 export class Teatro implements spettacolo {
   nomeSpettacolo: string;
   prenotazioni: prenotazioni;
-  nomePrenotazione: string;
   rapido: boolean;
-  constructor(nomePrenotazione, nomeSpettacolo, prenotazioni, rapido) {
-    this.nomePrenotazione = nomePrenotazione;
+  constructor(nomeSpettacolo, prenotazioni, rapido) {
     this.nomeSpettacolo = nomeSpettacolo;
     this.prenotazioni = prenotazioni;
     this.rapido = rapido;
@@ -51,7 +49,6 @@ export class AppComponent {
   //crea il teatro --> TeatroComponent
   generaTeatro(rapido) {
     this.teatro = new Teatro(
-      this.nomeInserito,
       this.nomeSpettacolo,
       this.datiIn[this.spettacoloScelto].teatro,
       rapido

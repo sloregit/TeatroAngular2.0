@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Teatro } from '../app.component';
 
 export class Prenotazione {
@@ -39,6 +39,8 @@ export class PrenotazioneMultipla {
 export class TeatroComponent implements OnInit {
   @Input() teatro: Teatro;
   @Input() prenotazioneMultipla: PrenotazioneMultipla;
+  @Input() nomeInserito: string;
+  @Output() nomeInseritoChange = new EventEmitter<string>();
   constructor() {}
   mostraNome(this) {
     console.log(this.value);
