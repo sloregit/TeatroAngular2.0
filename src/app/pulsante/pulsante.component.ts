@@ -5,6 +5,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './pulsante.component.html',
   styleUrls: ['./pulsante.component.css'],
 })
+
+//Se il posto non è prenotato lo seleziona, altrimenti restituisce il nome della prenotazione
 export class PulsanteComponent implements OnInit {
   @Input() posto;
   @Output() selezionatoEmitter = new EventEmitter<boolean>();
@@ -16,6 +18,8 @@ export class PulsanteComponent implements OnInit {
       this.selezionato === true
         ? (this.selezionato = false)
         : (this.selezionato = true);
+    } else {
+      this.selezionatoEmitter.emit(this.posto);
     }
     this.selezionatoEmitter.emit(this.selezionato);
   }

@@ -43,7 +43,7 @@ export class TeatroComponent implements OnInit {
   @Output() nomeInseritoChange = new EventEmitter<string>();
   constructor() {}
   mostraNome(this) {
-    console.log(this.value);
+    console.log(this);
   }
 
   ///////////////////////////////////////////////////////SONO QUI
