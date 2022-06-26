@@ -18,6 +18,7 @@ export class ZonaTeatroComponent implements OnInit {
   selezionato: boolean;
   nuovaPrenotazione: Prenotazione;
   prenotabile: boolean = false;
+  prenotato: boolean = false;
   constructor() {}
   isSelezionato($event: boolean) {
     this.selezionato = $event;
@@ -33,6 +34,7 @@ export class ZonaTeatroComponent implements OnInit {
       if (this.rapido) {
         this.prenotazioni[fila][posto] = this.nome;
         this.prenotazioniChange.emit(this.prenotazioni);
+        this.prenotabile = false;
       } else {
         //crea una prenotazione multipla se non esiste e aggiunge la prima prenotazione
         if (this.selezionati === undefined) {
