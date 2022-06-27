@@ -17,6 +17,8 @@ export class PulsanteComponent implements OnInit {
   selezionato: boolean = false;
   constructor() {}
   select() {
+    this.nomePostoEmitter.emit(this.posto);
+    //se è inserito è possibile prenotare
     if (this.nome !== undefined && this.nome.length > 0) {
       this.prenotabile = true;
       this.prenotabileChange.emit(this.prenotabile);
@@ -25,15 +27,12 @@ export class PulsanteComponent implements OnInit {
         this.selezionato === true
           ? (this.selezionato = false)
           : (this.selezionato = true);
-        this.nomePostoEmitter.emit(undefined);
-      } else {
-        this.nomePostoEmitter.emit(this.posto);
       }
       this.selezionatoEmitter.emit(this.selezionato);
     } else {
       this.prenotabile = false;
       this.prenotabileChange.emit(false);
-      alert('inserisci un nome');
+      //alert('inserisci un nome');
     }
   }
   ngOnInit() {}
