@@ -18,7 +18,7 @@ export class ZonaTeatroComponent implements OnInit {
   selezionato: boolean;
   nuovaPrenotazione: Prenotazione;
   prenotabile: boolean = true;
-  prenotato: boolean = false;
+  @Input() prenotato: boolean;
   constructor() {}
   isSelezionato($event: boolean) {
     this.selezionato = $event;
@@ -32,6 +32,7 @@ export class ZonaTeatroComponent implements OnInit {
     if (this.prenotabile) {
       this.prenotazioni[fila][posto] = this.nome;
       this.prenotazioniChange.emit(this.prenotazioni);
+      this.prenotato = true;
       this.prenotabile = false;
     }
   }

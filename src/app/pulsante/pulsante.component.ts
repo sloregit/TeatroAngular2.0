@@ -12,13 +12,13 @@ export class PulsanteComponent implements OnInit {
   @Input() nome: string;
   @Input() etichetta: string;
   @Input() prenotabile: boolean;
+  @Input() prenotato: boolean;
   @Output() prenotabileChange = new EventEmitter<boolean>();
   @Output() selezionatoEmitter = new EventEmitter<boolean>();
   @Output() nomePostoEmitter = new EventEmitter<string>();
   selezionato: boolean = false;
   constructor() {}
   select() {
-    //se il posto è libero e viene cliccato viene selezionato
     if (this.posto === null) {
       this.selezionato === true
         ? (this.selezionato = false)
@@ -27,6 +27,8 @@ export class PulsanteComponent implements OnInit {
       this.nomePostoEmitter.emit(this.posto);
     }
     this.selezionatoEmitter.emit(this.selezionato);
+
+    //se il posto è libero e viene cliccato viene selezionato
   }
 
   ngOnInit() {}

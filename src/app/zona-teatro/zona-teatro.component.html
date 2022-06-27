@@ -5,6 +5,7 @@
       [nome]="nome"
       [etichetta]="'P' + i + j"
       [(prenotabile)]="prenotabile"
+      [prenotato]="prenotato"
       (click)="
         this.rapido && nome ? prenotaRapido(i, j) : selezionaPrenotazioni(i, j)
       "

@@ -43,6 +43,7 @@ export class TeatroComponent implements OnInit {
   @Output() nomeInseritoChange = new EventEmitter<string>();
   @Output() teatroChange = new EventEmitter<undefined>();
   nomePrenotato: string;
+  prenotato: boolean;
   constructor() {}
   // riceve il nome della prenotazione da zona-component
   mostraNome($event) {
@@ -66,6 +67,7 @@ export class TeatroComponent implements OnInit {
     });
     this.nomeInserito = undefined;
     this.nomeInseritoChange.emit(undefined);
+    this.prenotato = true;
 
     //this.teatro = undefined;
   }
