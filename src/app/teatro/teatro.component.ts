@@ -71,27 +71,3 @@ export class TeatroComponent implements OnInit {
   }
   ngOnInit() {}
 }
-/**
- * Prenotazione {zona: "platea", nome: "ssfd", fila: 5, posto: 5…}
-fila: 5
-nome: "ssfd"
-posto: 5
-zona: "platea"
-__proto__: Prenotazione
- * 
- * 
- */
-/**
- export class Teatro implements spettacolo {
-  nomeSpettacolo: string;
-  prenotazioni: prenotazioni;
-  nomePrenotazione: string;
-  rapido: boolean;
-  constructor(nomePrenotazione, nomeSpettacolo, prenotazioni, rapido) {
-    this.nomePrenotazione = nomePrenotazione;
-    this.nomeSpettacolo = nomeSpettacolo;
-    this.prenotazioni = prenotazioni;
-    this.rapido = rapido;
-  }
-}
- */
