@@ -1,8 +1,8 @@
-<p *ngIf="nomePrenotato" #show>
-  Questo posto è gia prenotato da: {{ nomePrenotato }}
+<p [ngStyle]="{ height: '20px', width: '50%', border: '0.5px dashed black' }">
+  Prenotazione: {{ nomePrenotato }}
 </p>
+<br />
 <div *ngIf="teatro">
-  <p>Platea</p>
   <app-zona-teatro
     [(prenotazioni)]="teatro.prenotazioni.platea"
     [nome]="nomeInserito"
@@ -11,7 +11,7 @@
     [(selezionati)]="prenotazioneMultipla"
     (mostraNomeEmitter)="mostraNome($event)"
   ></app-zona-teatro>
-  <p>Palco</p>
+  <br />
   <app-zona-teatro
     [(prenotazioni)]="teatro.prenotazioni.palco"
     [nome]="nomeInserito"
@@ -22,7 +22,7 @@
   ></app-zona-teatro>
 </div>
 <br />
-<button *ngIf="!teatro.rapido" (click)="confermaPrenotazioni()">
+<button *ngIf="!teatro.rapido && nomeInserito" (click)="confermaPrenotazioni()">
   Conferma
 </button>
 <br />

@@ -72,6 +72,7 @@ export class AppComponent {
     this.AppDataService.getPrenotazioni$().subscribe({
       next: (res: string) => {
         this.datiIn = JSON.parse(res);
+        console.log(this.datiIn);
         for (let elem in this.datiIn) {
           this.arrayNomeSpettacoli.push(this.datiIn[elem].nomeSpettacolo);
         }

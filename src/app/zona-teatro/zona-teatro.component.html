@@ -3,8 +3,11 @@
     <app-pulsante
       [posto]="posto"
       [nome]="nome"
+      [etichetta]="'P' + i + j"
       [(prenotabile)]="prenotabile"
-      (click)="prenota(i, j)"
+      (click)="
+        this.rapido && nome ? prenotaRapido(i, j) : selezionaPrenotazioni(i, j)
+      "
       (selezionatoEmitter)="isSelezionato($event)"
       (nomePostoEmitter)="mostraNome_TeatroComponent($event)"
     >

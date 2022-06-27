@@ -17,7 +17,7 @@ export class ZonaTeatroComponent implements OnInit {
   @Output() mostraNomeEmitter = new EventEmitter<string>();
   selezionato: boolean;
   nuovaPrenotazione: Prenotazione;
-  prenotabile: boolean = false;
+  prenotabile: boolean = true;
   prenotato: boolean = false;
   constructor() {}
   isSelezionato($event: boolean) {
@@ -28,17 +28,31 @@ export class ZonaTeatroComponent implements OnInit {
   }
 
   //Se rapida, prenota il posto
-  //altrimenti aggiunge la prenotazione alla prenotazione multipla
-  prenota(fila: number, posto: number) {
+  prenotaRapido(fila: number, posto: number) {
     if (this.prenotabile) {
-      if (this.rapido) {
-        this.prenotazioni[fila][posto] = this.nome;
-        this.prenotazioniChange.emit(this.prenotazioni);
-        this.prenotabile = false;
+      this.prenotazioni[fila][posto] = this.nome;
+      this.prenotazioniChange.emit(this.prenotazioni);
+      this.prenotabile = false;
+    }
+  }
+
+  //Se non rapida, crea e aggiunge la prenotazione ad una prenotazione multipla
+  selezionaPrenotazioni(fila: number, posto: number) {
+    if (this.prenotabile) {
+      //crea una prenotazione multipla se non esiste e aggiunge la prima prenotazione
+      if (this.selezionati === undefined) {
+        this.selezionati = new PrenotazioneMultipla();
+        this.nuovaPrenotazione = new Prenotazione(
+          this.zona,
+          this.nome,
+          fila,
+          posto
+        );
+        this.selezionati.aggiungi(this.nuovaPrenotazione);
       } else {
-        //crea una prenotazione multipla se non esiste e aggiunge la prima prenotazione
-        if (this.selezionati === undefined) {
-          this.selezionati = new PrenotazioneMultipla();
+        if (!this.selezionato) {
+          this.selezionati.rimuovi(fila, posto);
+        } else {
           this.nuovaPrenotazione = new Prenotazione(
             this.zona,
             this.nome,
@@ -46,21 +60,9 @@ export class ZonaTeatroComponent implements OnInit {
             posto
           );
           this.selezionati.aggiungi(this.nuovaPrenotazione);
-        } else {
-          if (!this.selezionato) {
-            this.selezionati.rimuovi(fila, posto);
-          } else {
-            this.nuovaPrenotazione = new Prenotazione(
-              this.zona,
-              this.nome,
-              fila,
-              posto
-            );
-            this.selezionati.aggiungi(this.nuovaPrenotazione);
-          }
         }
-        this.selezionatiChange.emit(this.selezionati);
       }
+      this.selezionatiChange.emit(this.selezionati);
     }
   }
 

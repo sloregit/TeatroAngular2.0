@@ -1,8 +1,8 @@
 <button
   #puls
   [ngClass]="selezionato ? 'selezionato' : 'nonSelezionato'"
-  [ngClass]="posto !== 'x' ? 'prenotato' : 'libero'"
-  (click)="select()"
+  [ngClass]="posto !== null ? 'prenotato' : 'libero'"
+  (click)="nome ? select() : this.nomePostoEmitter.emit(this.posto)"
 >
-  {{ posto }}
+  {{ etichetta }}
 </button>

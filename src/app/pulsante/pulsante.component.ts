@@ -10,6 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PulsanteComponent implements OnInit {
   @Input() posto: string;
   @Input() nome: string;
+  @Input() etichetta: string;
   @Input() prenotabile: boolean;
   @Output() prenotabileChange = new EventEmitter<boolean>();
   @Output() selezionatoEmitter = new EventEmitter<boolean>();
@@ -17,23 +18,16 @@ export class PulsanteComponent implements OnInit {
   selezionato: boolean = false;
   constructor() {}
   select() {
-    this.nomePostoEmitter.emit(this.posto);
-    //se è inserito è possibile prenotare
-    if (this.nome !== undefined && this.nome.length > 0) {
-      this.prenotabile = true;
-      this.prenotabileChange.emit(this.prenotabile);
-      //se il posto è libero e viene cliccato viene selezionato
-      if (this.posto === 'x') {
-        this.selezionato === true
-          ? (this.selezionato = false)
-          : (this.selezionato = true);
-      }
-      this.selezionatoEmitter.emit(this.selezionato);
+    //se il posto è libero e viene cliccato viene selezionato
+    if (this.posto === null) {
+      this.selezionato === true
+        ? (this.selezionato = false)
+        : (this.selezionato = true);
     } else {
-      this.prenotabile = false;
-      this.prenotabileChange.emit(false);
-      //alert('inserisci un nome');
+      this.nomePostoEmitter.emit(this.posto);
     }
+    this.selezionatoEmitter.emit(this.selezionato);
   }
+
   ngOnInit() {}
 }
