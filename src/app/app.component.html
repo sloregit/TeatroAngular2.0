@@ -2,6 +2,7 @@
   <button (click)="getDati(false)">Accedi</button><br />
   <button (click)="getDati(true)">Gestione spettacoli</button>
 </div>
+
 <div *ngIf="login && !admin">
   <div *ngIf="!teatro">
     <select (change)="numeraSpettacolo($event)">

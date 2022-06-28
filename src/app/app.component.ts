@@ -2,19 +2,24 @@ import { Component, VERSION } from '@angular/core';
 import { last } from 'rxjs/operators';
 import { AppDataService } from './appdata.service';
 
-export interface spettacolo {
+export class spettacolo {
   nomeSpettacolo: string;
   prenotazioni: prenotazioni;
+  generaPrenotazioni?(zona: prenotazioni) {}
 }
 export interface prenotazioni {
-  platea?: Array<string>;
-  palco?: Array<string>;
+  platea?: Array<Array<string>>;
+  palco?: Array<Array<string>>;
 }
 export class Teatro implements spettacolo {
   nomeSpettacolo: string;
   prenotazioni: prenotazioni;
   rapido: boolean;
-  constructor(nomeSpettacolo, prenotazioni, rapido) {
+  constructor(
+    nomeSpettacolo: string,
+    prenotazioni: prenotazioni,
+    rapido: boolean
+  ) {
     this.nomeSpettacolo = nomeSpettacolo;
     this.prenotazioni = prenotazioni;
     this.rapido = rapido;
@@ -66,7 +71,7 @@ export class AppComponent {
     this.nomeInserito = $event.target.value;
   }
   //richiede le prenotazioni e costruisce l'array con i nomi degli spettacoli
-  getDati(admin) {
+  getDati(admin: boolean) {
     this.admin = admin;
     this.login = true;
     this.AppDataService.getPrenotazioni$().subscribe({

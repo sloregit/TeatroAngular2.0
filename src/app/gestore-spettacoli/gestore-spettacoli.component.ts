@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { formControl } from '@angular/core/schematics/migrations/typed-forms/util';
 import { FormControl } from '@angular/forms';
 
-import { spettacolo } from '../app.component';
+import { spettacolo, prenotazioni } from '../app.component';
 
 @Component({
   selector: 'app-gestore-spettacoli',
@@ -12,7 +11,7 @@ import { spettacolo } from '../app.component';
 export class GestoreSpettacoliComponent implements OnInit {
   @Input() arrayNomeSpettacoli;
   @Output() arrayNomeSpettacoliChange = new EventEmitter();
-  nomeSpettacolo: string;
+  nomeSpettacolo = new FormControl<string>('');
   showOld: boolean = false;
   filePlatea: number;
   postiPlatea: number;
@@ -20,10 +19,10 @@ export class GestoreSpettacoliComponent implements OnInit {
   postiPalco: number;
   elementiPlatea: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   elementiPalco: number[] = [1, 2, 3, 4, 5, 6];
-  nome = new FormControl('');
   constructor() {}
   confermaSpettacoli() {
     console.log(
+      this.nomeSpettacolo.value,
       ['Platea', this.filePlatea, this.postiPlatea],
       ['Palco', this.filePalco, this.postiPalco]
     );
