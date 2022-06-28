@@ -17,17 +17,19 @@
       </option></select
     ><br />
     <div *ngIf="spettacoloScelto">
+      <input
+        type="text"
+        (keyup)="inInput($event)"
+        [ngModel]="nomeInserito"
+        placeholder="inserisci il tuo nome"
+      /><br />
+    </div>
+    <div *ngIf="nomeInserito">
       <button (click)="generaTeatro(false)">Prenota</button>
       <button (click)="generaTeatro(true)">Prenotazione Rapida</button>
     </div>
   </div>
   <div *ngIf="teatro">
-    <input
-      type="text"
-      (keyup)="inInput($event)"
-      [ngModel]="nomeInserito"
-      placeholder="inserisci il tuo nome"
-    /><br />
     <app-teatro
       [(nomeInserito)]="nomeInserito"
       [(teatro)]="teatro"

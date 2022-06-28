@@ -1,7 +1,3 @@
-<p [ngStyle]="{ height: '20px', width: '50%', border: '0.5px dashed black' }">
-  Prenotazione: {{ nomePrenotato }}
-</p>
-<br />
 <div *ngIf="teatro">
   <app-zona-teatro
     [(prenotazioni)]="teatro.prenotazioni.platea"
@@ -23,6 +19,10 @@
     [prenotato]="prenotato"
   ></app-zona-teatro>
 </div>
+<br />
+<p [ngStyle]="{ height: '20px', width: '50%', border: '0.5px dashed black' }">
+  Prenotazione: {{ nomePrenotato }}
+</p>
 <br />
 <button *ngIf="!teatro.rapido && nomeInserito" (click)="confermaPrenotazioni()">
   Conferma
