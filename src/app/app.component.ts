@@ -8,8 +8,8 @@ export class spettacolo {
   generaPrenotazioni?(zona: prenotazioni) {}
 }
 export interface prenotazioni {
-  platea?: Array<Array<string>>;
-  palco?: Array<Array<string>>;
+  platea?: Array<string>;
+  palco?: Array<string>;
 }
 export class Teatro implements spettacolo {
   nomeSpettacolo: string;

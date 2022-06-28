@@ -7,7 +7,7 @@ import { Prenotazione, PrenotazioneMultipla } from '../teatro/teatro.component';
   styleUrls: ['./zona-teatro.component.css'],
 })
 export class ZonaTeatroComponent implements OnInit {
-  @Input() prenotazioni;
+  @Input() prenotazioni: Array<string>;
   @Input() zona;
   @Input() nome: string;
   @Input() rapido: boolean;
