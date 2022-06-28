@@ -51,6 +51,10 @@ export class AppComponent {
     this.spettacoloScelto = undefined;
     this.teatro = undefined;
   }
+
+  aggiungiSpettacolo($event) {
+    console.log($event);
+  }
   //crea il teatro --> TeatroComponent
   generaTeatro(rapido) {
     this.teatro = new Teatro(

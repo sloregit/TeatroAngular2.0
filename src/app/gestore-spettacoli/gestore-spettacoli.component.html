@@ -17,32 +17,35 @@
       [formControl]="nomeSpettacolo"
       placeholder="nome dello spettacolo?"
     />
-    <div [ngClass]="'container'">
-      <p>Configura la platea</p>
-      <app-selezione
-        [nomeElem]="'file'"
-        [elementi]="elementiPlatea"
-        [(selezionato)]="filePlatea"
-      ></app-selezione>
-      <app-selezione
-        [nomeElem]="'posti'"
-        [elementi]="elementiPlatea"
-        [(selezionato)]="postiPlatea"
-      ></app-selezione>
+    <div *ngIf="nomeSpettacolo.value">
+      <div [ngClass]="'container'">
+        <p>Configura la platea</p>
+        <app-selezione
+          [nomeElem]="'file'"
+          [elementi]="elementiPlatea"
+          [(selezionato)]="filePlatea"
+        ></app-selezione>
+        <app-selezione
+          [nomeElem]="'posti'"
+          [elementi]="elementiPlatea"
+          [(selezionato)]="postiPlatea"
+        ></app-selezione>
+      </div>
+      <div [ngClass]="'container'">
+        <p>Configura il Palco</p>
+        <app-selezione
+          [nomeElem]="'file'"
+          [elementi]="elementiPalco"
+          [(selezionato)]="filePalco"
+        ></app-selezione>
+        <app-selezione
+          [nomeElem]="'posti'"
+          [elementi]="elementiPalco"
+          [(selezionato)]="postiPalco"
+        ></app-selezione>
+      </div>
     </div>
-    <div [ngClass]="'container'">
-      <p>Configura il Palco</p>
-      <app-selezione
-        [nomeElem]="'file'"
-        [elementi]="elementiPalco"
-        [(selezionato)]="filePalco"
-      ></app-selezione>
-      <app-selezione
-        [nomeElem]="'posti'"
-        [elementi]="elementiPalco"
-        [(selezionato)]="postiPalco"
-      ></app-selezione>
-    </div>
+
     <br />
     <button (click)="confermaSpettacoli()">Conferma</button>
     <br />

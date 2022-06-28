@@ -37,6 +37,7 @@
 <div *ngIf="login && admin">
   <app-gestore-spettacoli
     [(arrayNomeSpettacoli)]="arrayNomeSpettacoli"
+    (nuovoSpettacoloEmitter)="aggiungiSpettacolo($event)"
   ></app-gestore-spettacoli>
 </div>
 <button *ngIf="login && !teatro" (click)="indietro()">Indietro</button>

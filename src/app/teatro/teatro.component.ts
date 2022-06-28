@@ -42,6 +42,7 @@ export class TeatroComponent implements OnInit {
   @Input() nomeInserito: string;
   @Output() nomeInseritoChange = new EventEmitter<string>();
   @Output() teatroChange = new EventEmitter<undefined>();
+  @Output() prenotazioni
   nomePrenotato: string;
   prenotato: boolean;
   constructor() {}
