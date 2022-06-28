@@ -1,9 +1,9 @@
 <div>
-<p [ngClass]="'inline'">{{ nomeElem }}</p>
-<select (change)="valoreSelezionato($event)">
-  <option selected="true" disabled="true" [value]="0"></option>
-  <option *ngFor="let elem of elementi" [value]="elem">
-    {{ elem }}
-  </option>
-</select>
+  <p [ngClass]="'inline'">{{ nomeElem }}</p>
+  <select (change)="valoreSelezionato($event)">
+    <option selected="true" disabled="true" [value]="0"></option>
+    <option *ngFor="let elem of elementi" [value]="elem">
+      {{ elem }}
+    </option>
+  </select>
 </div>
