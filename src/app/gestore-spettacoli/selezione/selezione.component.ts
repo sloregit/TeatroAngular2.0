@@ -13,7 +13,7 @@ export class SelezioneComponent implements OnInit {
 
   constructor() {}
   valoreSelezionato($event) {
-    this.selezionatoChange.emit($event.target.value);
+    this.selezionatoChange.emit($event.target.value * 1);
   }
   ngOnInit() {}
 }

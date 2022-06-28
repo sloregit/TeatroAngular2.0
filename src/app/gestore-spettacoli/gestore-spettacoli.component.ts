@@ -16,15 +16,10 @@ export class nuovoSpettacolo implements spettacolo {
     filePalco: number,
     postipalco: number
   ) {
-    console.log(typeof filePlatea, postiPlatea, filePalco, postipalco);
     return {
       nomeSpettacolo: <string>this.nomeSpettacolo,
-      teatro: { platea: Array(filePlatea).fill('ciao') },
-    };
-  }
-}
-/**
- * platea: Array(filePlatea)
+      teatro: {
+        platea: Array(filePlatea)
           .fill('fila')
           .map(() =>
             Array(postiPlatea)
@@ -42,7 +37,10 @@ export class nuovoSpettacolo implements spettacolo {
                 return undefined;
               })
           ),
- */
+      },
+    };
+  }
+}
 @Component({
   selector: 'app-gestore-spettacoli',
   templateUrl: './gestore-spettacoli.component.html',
@@ -80,34 +78,5 @@ export class GestoreSpettacoliComponent implements OnInit {
     console.log($event.target.value);
   }
 
-  NewresetPrenotazioni() {
-    const prenotazioni: object = {
-      platea: new Array(this.filePlatea).fill('fila').map(() =>
-        Array(10)
-          .fill('posto')
-          .map((val, posto) => {
-            return (val = 'x');
-          })
-      ),
-      palco: Array(4)
-        .fill('fila')
-        .map(() =>
-          Array(4)
-            .fill('posto')
-            .map((val, posto) => {
-              return (val = 'x');
-            })
-        ),
-    };
-    const sale = [
-      { nomeSpettacolo: 'spettacolo 1', teatro: prenotazioni },
-      { nomeSpettacolo: 'spettacolo 2', teatro: prenotazioni },
-      { nomeSpettacolo: 'spettacolo 3', teatro: prenotazioni },
-    ];
-    console.log(sale);
-    /*this.AppDBservice.SetPrenotazioni$(JSON.stringify(sale)).subscribe(
-      (val) => (this.conferma = 'Teatro resettato')
-    );*/
-  }
   ngOnInit() {}
 }
