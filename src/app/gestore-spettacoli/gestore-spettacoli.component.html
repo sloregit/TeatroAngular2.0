@@ -1,5 +1,8 @@
 <span>
-  <button (click)="showOld = true">Spettacoli attuali</button>
+  <button *ngIf="showOld === false" (click)="showOld = true">
+    Spettacoli attuali
+  </button>
+  <button *ngIf="showOld === true" (click)="showOld = false">Nascondi</button>
   <div
     *ngIf="showOld === true"
     [ngStyle]="{ border: '0.5px solid black', padding: '1%' }"
@@ -7,7 +10,6 @@
     <div #spettacoli *ngFor="let spettacolo of arrayNomeSpettacoli">
       <p>{{ spettacolo }}</p>
     </div>
-    <button (click)="showOld = false">Nascondi</button>
   </div>
   <div>
     <p>Inserisci il nome dello spettacolo</p>

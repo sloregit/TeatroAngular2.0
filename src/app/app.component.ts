@@ -59,9 +59,7 @@ export class AppComponent {
     this.datiOut.push($event);
     this.AppDataService.SetPrenotazioni$(
       JSON.stringify(this.datiOut)
-    ).subscribe(
-      (val) => (this.conferma = "{{$event.nomeSpettacolo}}+ ' aggiunto'")
-    );
+    ).subscribe((val) => (this.conferma = $event.nomeSpettacolo + ' aggiunto'));
   }
   //crea il teatro --> TeatroComponent
   generaTeatro(rapido) {
