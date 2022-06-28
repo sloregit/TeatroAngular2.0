@@ -33,6 +33,7 @@
     <app-teatro
       [(nomeInserito)]="nomeInserito"
       [(teatro)]="teatro"
+      (teatroChange)="aggiornaPrenotazioni($event)"
     ></app-teatro>
   </div>
 </div>

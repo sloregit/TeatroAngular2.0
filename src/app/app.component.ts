@@ -34,7 +34,7 @@ export class AppComponent {
   login: boolean = false;
   admin: boolean = false;
   datiIn: Array<spettacolo>;
-  datiOut: Array<spettacolo>;
+  datiOut;
   teatro: Teatro;
   nomeInserito: string;
   conferma: string;
@@ -52,6 +52,19 @@ export class AppComponent {
     this.nomeInserito = undefined;
     this.spettacoloScelto = undefined;
     this.teatro = undefined;
+  }
+  /**
+   Teatro {nomeSpettacolo: "spettacolo 1", prenotazioni: {…}, rapido: false}
+  nomeSpettacolo: "spettacolo 1"
+  prenotazioni: Object
+  rapido: false
+  __proto__: Teatro */
+  aggiornaPrenotazioni($event) {
+    //console.log($event);
+    console.log(this.datiIn);
+    //this.datiOut = this.datiIn;
+    //this.datiOut[this.spettacoloScelto] = $event;
+    //console.log(this.datiOut);
   }
   //attende il valore dello spettacolo da aggiungere, lo inserisce e chiama il DB
   aggiungiSpettacolo($event: spettacolo) {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Teatro } from '../app.component';
+import { prenotazioni, Teatro } from '../app.component';
 
 export class Prenotazione {
   zona: string;
@@ -41,8 +41,8 @@ export class TeatroComponent implements OnInit {
   @Input() prenotazioneMultipla: PrenotazioneMultipla;
   @Input() nomeInserito: string;
   @Output() nomeInseritoChange = new EventEmitter<string>();
-  @Output() teatroChange = new EventEmitter<undefined>();
-  @Output() prenotazioni
+  @Output() teatroChange = new EventEmitter<undefined | Teatro>();
+  @Output() prenotazioniOut = new EventEmitter();
   nomePrenotato: string;
   prenotato: boolean;
   constructor() {}
@@ -60,12 +60,12 @@ export class TeatroComponent implements OnInit {
   ///////////////////////////////////////////////////////SONO QUI
   confermaPrenotazioni() {
     ///rimappare le prenotazioni e invio al DB la richiesta
-    // this.prenotazioni[fila][posto] = this.nome;
     this.prenotazioneMultipla.selezionati.map((prenotazione) => {
       this.teatro.prenotazioni[prenotazione.zona][prenotazione.fila][
         prenotazione.posto
       ] = prenotazione.nome;
     });
+    this.teatroChange.emit(this.teatro);
     this.nomeInserito = undefined;
     this.nomeInseritoChange.emit(undefined);
     this.prenotato = true;
