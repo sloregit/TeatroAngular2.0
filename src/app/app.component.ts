@@ -2,11 +2,11 @@ import { Component, VERSION } from '@angular/core';
 import { last } from 'rxjs/operators';
 import { AppDataService } from './appdata.service';
 
-export class spettacolo {
+export interface spettacolo {
   nomeSpettacolo: string;
   prenotazioni: prenotazioni;
-  generaPrenotazioni?(zona: prenotazioni) {}
 }
+
 export interface prenotazioni {
   platea?: Array<string>;
   palco?: Array<string>;
@@ -59,6 +59,7 @@ export class AppComponent {
       rapido
     );
     this.spettacoloScelto = undefined;
+    console.log(this.teatro.prenotazioni.palco);
   }
   //richiamata al change del <select>, assegna il nome e l'indice dello spettacolo
   numeraSpettacolo($event) {
