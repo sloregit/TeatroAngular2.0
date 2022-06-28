@@ -20,7 +20,7 @@ export class nuovoSpettacolo implements spettacolo {
   //{ nomeSpettacolo: 'spettacolo 1', teatro: prenotazioni }
   genera() {
     return {
-      nomeSpettacolo: this.nomeSpettacolo,
+      nomeSpettacolo: <string>this.nomeSpettacolo,
       teatro: (this.prenotazioni = {
         platea: Array(this.filePlatea)
           .fill('fila')
@@ -71,10 +71,9 @@ export class GestoreSpettacoliComponent implements OnInit {
       this.filePalco,
       this.postiPalco
     );
-    console.log(this.nuovoSpettacolo.genera());
     this.arrayNomeSpettacoli.push(this.nuovoSpettacolo.nomeSpettacolo);
-    this.arrayNomeSpettacoliChange.emit(this.nuovoSpettacolo.nomeSpettacolo);
-    this.nuovoSpettacoloEmitter.emit(this.nuovoSpettacolo);
+    this.arrayNomeSpettacoliChange.emit(this.arrayNomeSpettacoli);
+    this.nuovoSpettacoloEmitter.emit(this.nuovoSpettacolo.genera());
   }
   nomeSpettacoloInput($event) {
     console.log($event.target.value);
