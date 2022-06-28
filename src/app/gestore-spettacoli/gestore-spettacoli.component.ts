@@ -5,45 +5,44 @@ import { spettacolo, prenotazioni } from '../app.component';
 
 export class nuovoSpettacolo implements spettacolo {
   nomeSpettacolo: string;
-  filePlatea: number;
-  postiPlatea: number;
-  filePalco: number;
-  postipalco: number;
   prenotazioni;
-  constructor(nomeSpettacolo, filePlatea, postiPlatea, filePalco, postipalco) {
+  constructor(nomeSpettacolo) {
     this.nomeSpettacolo = nomeSpettacolo;
-    this.filePlatea = filePlatea;
-    this.postiPlatea = postiPlatea;
-    this.filePalco = filePalco;
-    this.postipalco = postipalco;
   }
   //{ nomeSpettacolo: 'spettacolo 1', teatro: prenotazioni }
-  genera() {
+  genera(
+    filePlatea: number,
+    postiPlatea: number,
+    filePalco: number,
+    postipalco: number
+  ) {
+    console.log(typeof filePlatea, postiPlatea, filePalco, postipalco);
     return {
       nomeSpettacolo: <string>this.nomeSpettacolo,
-      teatro: (this.prenotazioni = {
-        platea: Array(this.filePlatea)
-          .fill('fila')
-          .map(() =>
-            Array(this.postiPlatea)
-              .fill('posto')
-              .map((val, posto) => {
-                return (val = undefined);
-              })
-          ),
-        palco: Array(this.filePalco)
-          .fill('fila')
-          .map(() =>
-            Array(this.postipalco)
-              .fill('posto')
-              .map((val, posto) => {
-                return (val = undefined);
-              })
-          ),
-      }),
+      teatro: { platea: Array(filePlatea).fill('ciao') },
     };
   }
 }
+/**
+ * platea: Array(filePlatea)
+          .fill('fila')
+          .map(() =>
+            Array(postiPlatea)
+              .fill('posto')
+              .map((val, posto) => {
+                return undefined;
+              })
+          ),
+        palco: Array(filePalco)
+          .fill('fila')
+          .map(() =>
+            Array(postipalco)
+              .fill('posto')
+              .map((val, posto) => {
+                return undefined;
+              })
+          ),
+ */
 @Component({
   selector: 'app-gestore-spettacoli',
   templateUrl: './gestore-spettacoli.component.html',
@@ -61,19 +60,21 @@ export class GestoreSpettacoliComponent implements OnInit {
   postiPalco: number;
   elementiPlatea: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   elementiPalco: number[] = [1, 2, 3, 4, 5, 6];
-  nuovoSpettacolo: nuovoSpettacolo;
+  nuovoSpettacolo;
   constructor() {}
   confermaSpettacoli() {
     this.nuovoSpettacolo = new nuovoSpettacolo(
-      this.nomeSpettacolo.value,
+      this.nomeSpettacolo.value
+    ).genera(
       this.filePlatea,
       this.postiPlatea,
       this.filePalco,
       this.postiPalco
     );
+    console.log(this.nuovoSpettacolo);
     this.arrayNomeSpettacoli.push(this.nuovoSpettacolo.nomeSpettacolo);
     this.arrayNomeSpettacoliChange.emit(this.arrayNomeSpettacoli);
-    this.nuovoSpettacoloEmitter.emit(this.nuovoSpettacolo.genera());
+    this.nuovoSpettacoloEmitter.emit(this.nuovoSpettacolo);
   }
   nomeSpettacoloInput($event) {
     console.log($event.target.value);
@@ -81,15 +82,13 @@ export class GestoreSpettacoliComponent implements OnInit {
 
   NewresetPrenotazioni() {
     const prenotazioni: object = {
-      platea: Array(6)
-        .fill('fila')
-        .map(() =>
-          Array(10)
-            .fill('posto')
-            .map((val, posto) => {
-              return (val = 'x');
-            })
-        ),
+      platea: new Array(this.filePlatea).fill('fila').map(() =>
+        Array(10)
+          .fill('posto')
+          .map((val, posto) => {
+            return (val = 'x');
+          })
+      ),
       palco: Array(4)
         .fill('fila')
         .map(() =>

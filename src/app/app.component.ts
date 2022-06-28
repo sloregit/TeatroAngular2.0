@@ -34,6 +34,7 @@ export class AppComponent {
   login: boolean = false;
   admin: boolean = false;
   datiIn: Array<spettacolo>;
+  datiOut: Array<spettacolo>;
   teatro: Teatro;
   nomeInserito: string;
   //
@@ -52,8 +53,11 @@ export class AppComponent {
     this.teatro = undefined;
   }
 
-  aggiungiSpettacolo($event) {
-    console.log($event);
+  aggiungiSpettacolo($event: spettacolo) {
+    this.datiOut = this.datiIn;
+    this.datiOut.push($event);
+    console.log(this.datiIn);
+    console.log(this.datiOut);
   }
   //crea il teatro --> TeatroComponent
   generaTeatro(rapido) {
