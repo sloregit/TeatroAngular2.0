@@ -16,11 +16,11 @@
       [ngStyle]="{ border: '0.5px solid black', padding: '1%', margin: '1%' }"
     >
       <p>Configura la platea</p>
-      <app-configura-zona
+      <app-selezione
         [nomeElem]="'file'"
         [elementi]="elementiPlatea"
         [(selezionato)]="filePlatea"
-      ></app-configura-zona>
+      ></app-selezione>
     </div>
     <br />
     <button (click)="confermaSpettacoli()">Conferma</button>
