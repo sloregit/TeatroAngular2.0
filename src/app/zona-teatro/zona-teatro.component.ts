@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Prenotazione, PrenotazioneMultipla } from '../teatro/teatro.component';
+import { spettacolo, prenotazioni } from '../app.component';
 
 @Component({
   selector: 'app-zona-teatro',
