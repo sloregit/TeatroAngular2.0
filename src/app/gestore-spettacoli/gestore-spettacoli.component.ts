@@ -69,7 +69,6 @@ export class GestoreSpettacoliComponent implements OnInit {
       this.filePalco,
       this.postiPalco
     );
-    console.log(this.nuovoSpettacolo);
     this.arrayNomeSpettacoli.push(this.nuovoSpettacolo.nomeSpettacolo);
     this.arrayNomeSpettacoliChange.emit(this.arrayNomeSpettacoli);
     this.nuovoSpettacoloEmitter.emit(this.nuovoSpettacolo);

@@ -37,6 +37,7 @@ export class AppComponent {
   datiOut: Array<spettacolo>;
   teatro: Teatro;
   nomeInserito: string;
+  conferma: string;
   //
   nomeSpettacolo: string;
   spettacoloScelto: string;
@@ -52,12 +53,15 @@ export class AppComponent {
     this.spettacoloScelto = undefined;
     this.teatro = undefined;
   }
-
+  //attende il valore dello spettacolo da aggiungere, lo inserisce e chiama il DB
   aggiungiSpettacolo($event: spettacolo) {
     this.datiOut = this.datiIn;
     this.datiOut.push($event);
-    console.log(this.datiIn);
-    console.log(this.datiOut);
+    this.AppDataService.SetPrenotazioni$(
+      JSON.stringify(this.datiOut)
+    ).subscribe(
+      (val) => (this.conferma = "{{$event.nomeSpettacolo}}+ ' aggiunto'")
+    );
   }
   //crea il teatro --> TeatroComponent
   generaTeatro(rapido) {
