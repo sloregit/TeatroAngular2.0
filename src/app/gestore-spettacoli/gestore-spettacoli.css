@@ -1,0 +1,9 @@
+.inline {
+  display: inline;
+}
+.float {
+  float: left;
+}
+.clear {
+  clear: both;
+}

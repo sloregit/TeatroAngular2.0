@@ -2,7 +2,7 @@
   <button (click)="getDati(false)">Accedi</button><br />
   <button (click)="getDati(true)">Gestione spettacoli</button>
 </div>
-<div *ngIf="login && admin == false">
+<div *ngIf="login && !admin">
   <div *ngIf="!teatro">
     <select (change)="numeraSpettacolo($event)">
       <option selected="true" disabled="true" [value]="0">
@@ -32,6 +32,11 @@
       [(teatro)]="teatro"
     ></app-teatro>
   </div>
+</div>
+<div *ngIf="login && admin">
+  <app-gestore-spettacoli
+    [(arrayNomeSpettacoli)]="arrayNomeSpettacoli"
+  ></app-gestore-spettacoli>
 </div>
 <button *ngIf="login && !teatro" (click)="indietro()">Indietro</button>
 <br />

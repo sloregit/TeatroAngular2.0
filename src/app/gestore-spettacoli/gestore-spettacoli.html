@@ -1,0 +1,29 @@
+<span>
+  <button (click)="showOld = true">Spettacoli attuali</button>
+  <div
+    *ngIf="showOld === true"
+    [ngStyle]="{ border: '0.5px solid black', padding: '1%' }"
+  >
+    <div #spettacoli *ngFor="let spettacolo of arrayNomeSpettacoli">
+      <p>{{ spettacolo }}</p>
+    </div>
+    <button (click)="showOld = false">Nascondi</button>
+  </div>
+  <div>
+    <p>Inserisci il nome dello spettacolo</p>
+    <input />
+    <div
+      [ngStyle]="{ border: '0.5px solid black', padding: '1%', margin: '1%' }"
+    >
+      <p>Configura la platea</p>
+      <app-configura-zona
+        [nomeElem]="'file'"
+        [elementi]="elementiPlatea"
+        [(selezionato)]="filePlatea"
+      ></app-configura-zona>
+    </div>
+    <br />
+    <button (click)="confermaSpettacoli()">Conferma</button>
+    <br />
+  </div>
+</span>

@@ -8,6 +8,7 @@ import { AppDataService } from './appdata.service';
 import { TeatroComponent } from './teatro/teatro.component';
 import { ZonaTeatroComponent } from './zona-teatro/zona-teatro.component';
 import { PulsanteComponent } from './pulsante/pulsante.component';
+import { GestoreSpettacoliComponent } from './gestore-spettacoli/gestore-spettacoli.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
@@ -16,6 +17,7 @@ import { PulsanteComponent } from './pulsante/pulsante.component';
     TeatroComponent,
     ZonaTeatroComponent,
     PulsanteComponent,
+    GestoreSpettacoliComponent,
   ],
   bootstrap: [AppComponent],
   providers: [AppDataService],
