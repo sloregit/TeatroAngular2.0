@@ -48,6 +48,7 @@ export class nuovoSpettacolo implements spettacolo {
 })
 export class GestoreSpettacoliComponent implements OnInit {
   @Input() arrayNomeSpettacoli;
+  @Input() conferma: string;
   @Output() arrayNomeSpettacoliChange = new EventEmitter();
   @Output() nuovoSpettacoloEmitter = new EventEmitter();
   nomeSpettacolo = new FormControl<string>('');
@@ -60,6 +61,7 @@ export class GestoreSpettacoliComponent implements OnInit {
   elementiPalco: number[] = [1, 2, 3, 4, 5, 6];
   nuovoSpettacolo;
   constructor() {}
+  //crea un nuovo spettacolo e genera il teatro vuoto
   confermaSpettacoli() {
     this.nuovoSpettacolo = new nuovoSpettacolo(
       this.nomeSpettacolo.value
@@ -72,9 +74,6 @@ export class GestoreSpettacoliComponent implements OnInit {
     this.arrayNomeSpettacoli.push(this.nuovoSpettacolo.nomeSpettacolo);
     this.arrayNomeSpettacoliChange.emit(this.arrayNomeSpettacoli);
     this.nuovoSpettacoloEmitter.emit(this.nuovoSpettacolo);
-  }
-  nomeSpettacoloInput($event) {
-    console.log($event.target.value);
   }
 
   ngOnInit() {}
