@@ -10,7 +10,7 @@
     [prenotato]="prenotato"
   ></app-zona-teatro>
   <br />
-  <p>Platea</p>
+  <p>Palco</p>
   <app-zona-teatro
     [(prenotazioni)]="teatro.prenotazioni.palco"
     [nome]="nomeInserito"
@@ -26,8 +26,12 @@
   Prenotazione: {{ nomePrenotato }}
 </p>
 <br />
-<button *ngIf="!teatro.rapido && nomeInserito" (click)="confermaPrenotazioni()">
+<button
+  [disabled]="!prenotazioneMultipla"
+  *ngIf="!teatro.rapido && nomeInserito"
+  (click)="confermaPrenotazioni()"
+>
   Conferma
 </button>
-<br />
+<br /><br />
 <button *ngIf="teatro" (click)="indietro()">Indietro</button>
