@@ -1,4 +1,5 @@
 <div *ngIf="teatro">
+  <p>Platea</p>
   <app-zona-teatro
     [(prenotazioni)]="teatro.prenotazioni.platea"
     [nome]="nomeInserito"
@@ -9,6 +10,7 @@
     [prenotato]="prenotato"
   ></app-zona-teatro>
   <br />
+  <p>Platea</p>
   <app-zona-teatro
     [(prenotazioni)]="teatro.prenotazioni.palco"
     [nome]="nomeInserito"

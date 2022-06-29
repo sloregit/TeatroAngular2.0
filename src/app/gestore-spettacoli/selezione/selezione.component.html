@@ -1,7 +1,6 @@
 <div>
   <p [ngClass]="'inline'">{{ nomeElem }}</p>
   <select (change)="valoreSelezionato($event)">
-    <option selected="true" disabled="true" [ngValue]="0">{{ 0 }}</option>
     <option *ngFor="let elem of elementi" [ngValue]="elem">
       {{ elem }}
     </option>

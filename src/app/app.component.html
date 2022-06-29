@@ -2,7 +2,6 @@
   <button (click)="getDati(false)">Accedi</button><br />
   <button (click)="getDati(true)">Gestione spettacoli</button>
 </div>
-
 <div *ngIf="login && !admin">
   <div *ngIf="!teatro">
     <select (change)="numeraSpettacolo($event)">
@@ -14,19 +13,22 @@
         [value]="i"
       >
         {{ spettacolo }}
-      </option></select
-    ><br />
+      </option>
+    </select>
+    <br /><br />
     <div *ngIf="spettacoloScelto">
       <input
         type="text"
         (keyup)="inInput($event)"
         [ngModel]="nomeInserito"
         placeholder="inserisci il tuo nome"
-      /><br />
-    </div>
-    <div *ngIf="nomeInserito">
-      <button (click)="generaTeatro(false)">Prenota</button>
-      <button (click)="generaTeatro(true)">Prenotazione Rapida</button>
+      /><br /><br />
+      <button [disabled]="!nomeInserito" (click)="generaTeatro(false)">
+        Prenota
+      </button>
+      <button [disabled]="!nomeInserito" (click)="generaTeatro(true)">
+        Prenotazione Rapida
+      </button>
     </div>
   </div>
   <div *ngIf="teatro">

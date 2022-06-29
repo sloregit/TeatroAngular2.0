@@ -9,7 +9,7 @@ export class nuovoSpettacolo implements spettacolo {
   constructor(nomeSpettacolo) {
     this.nomeSpettacolo = nomeSpettacolo;
   }
-  //{ nomeSpettacolo: 'spettacolo 1', teatro: prenotazioni }
+  //genera un nuovo spettacolo vuoto con nome
   genera(
     filePlatea: number,
     postiPlatea: number,
@@ -53,10 +53,10 @@ export class GestoreSpettacoliComponent implements OnInit {
   @Output() nuovoSpettacoloEmitter = new EventEmitter();
   nomeSpettacolo = new FormControl<string>('');
   showOld: boolean = false;
-  filePlatea: number;
-  postiPlatea: number;
-  filePalco: number;
-  postiPalco: number;
+  filePlatea: number = 1;
+  postiPlatea: number = 1;
+  filePalco: number = 1;
+  postiPalco: number = 1;
   elementiPlatea: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   elementiPalco: number[] = [1, 2, 3, 4, 5, 6];
   nuovoSpettacolo;

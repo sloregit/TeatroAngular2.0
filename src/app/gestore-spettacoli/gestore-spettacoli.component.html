@@ -1,25 +1,13 @@
 <span>
-  <button *ngIf="showOld === false" (click)="showOld = true">
-    Spettacoli attuali
-  </button>
-  <button *ngIf="showOld === true" (click)="showOld = false">Nascondi</button>
-  <div
-    *ngIf="showOld === true"
-    [ngStyle]="{ border: '0.5px solid black', padding: '1%' }"
-  >
-    <div #spettacoli *ngFor="let spettacolo of arrayNomeSpettacoli">
-      <p>{{ spettacolo }}</p>
-    </div>
-  </div>
   <div>
-    <p>Inserisci il nome dello spettacolo</p>
+    <p>Inserisci il nome dello spettacolo da aggiungere</p>
     <input
       type="text"
       id="nomeSpettacolo"
       [formControl]="nomeSpettacolo"
       placeholder="nome dello spettacolo?"
     />
-    <div *ngIf="nomeSpettacolo.value">
+    <div>
       <div [ngClass]="'container'">
         <p>Configura la platea</p>
         <app-selezione
@@ -47,8 +35,22 @@
         ></app-selezione>
       </div>
       <br />
-      <button (click)="confermaSpettacoli()">Conferma</button>
+      <button [disabled]="!nomeSpettacolo.value" (click)="confermaSpettacoli()">
+        Conferma
+      </button>
     </div>
     <p>{{ conferma }}</p>
+    <button *ngIf="showOld === false" (click)="showOld = true">
+      Spettacoli attuali
+    </button>
+    <button *ngIf="showOld === true" (click)="showOld = false">Nascondi</button>
+    <div
+      *ngIf="showOld === true"
+      [ngStyle]="{ border: '0.5px solid black', padding: '1%' }"
+    >
+      <div #spettacoli *ngFor="let spettacolo of arrayNomeSpettacoli">
+        <p>{{ spettacolo }}</p>
+      </div>
+    </div>
   </div>
 </span>
